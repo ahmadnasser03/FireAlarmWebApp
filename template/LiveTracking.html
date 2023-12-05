@@ -10,20 +10,39 @@
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+
+  <style>
+    #map {
+        min-height: 400px; /* Set a minimum height to ensure visibility */
+        width: 100%;
+    }
+</style>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet" />
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+<!-- End plugin css for this page -->
+<!-- inject:css -->
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/GenD1.png" />
+  
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+    </style>
+
 </head>
 <body>
   <div class="container-scroller">
-   
+    <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/GenD.png" style="width: 140px; height: 100px" class="mr-2" alt="logo"/></a>
@@ -33,7 +52,7 @@
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="icon-menu"></span>
         </button>
-      
+     
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -381,7 +400,7 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
               </ul>
             </div>
-          </li>
+          </li>   
           <li class="nav-item">
             <a class="nav-link" href="pages/documentation/documentation.html">
               <i class="icon-paper menu-icon"></i>
@@ -395,128 +414,13 @@
         <div class="content-wrapper">
           <div class="row">
             <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h6 class="font-weight-normal mb-0"> <span class="text-primary"></span></h6>
-                </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                    <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                     <i class="mdi mdi-calendar"></i> Today (6 Dec 2023)
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                      <a class="dropdown-item" href="#">January - March</a>
-                      <a class="dropdown-item" href="#">March - June</a>
-                      <a class="dropdown-item" href="#">June - August</a>
-                      <a class="dropdown-item" href="#">August - November</a>
-                    </div>
-                  </div>
-                 </div>
-                </div>
-              </div>
+              <div id="map"></div>
+
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card tale-bg">
-                <div class="card-people mt-auto" style="padding-top: 0;">
-                  <img src="images/dashboard/WhatsApp Image 2023-12-05 at 02.03.06_5f0e1ea6.jpg" alt="people">
-                  
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 grid-margin transparent">
-              <div class="row">
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-tale" style="background-color: orange;">
-                    <div class="card-body">
-                      <p class="mb-4">Total Number of Cases</p>
-                      <p class="fs-30 mb-2">4006</p>
-                      <p>10.00% (30 days)</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-dark-blue" style="background-color: #fa8331;">
-                    <div class="card-body">
-                      <p class="mb-4">Active Cases</p>
-                      <p class="fs-30 mb-2">61344</p>
-                      <p>22.00% (30 days)</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                  <div class="card card-light-blue" style="background-color:    #ff6a00;">
-                    <div class="card-body">
-                      <p class="mb-4">Closed Cases</p>
-                      <p class="fs-30 mb-2">34040</p>
-                      <p>2.00% (30 days)</p>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
+         
       
-          <div class="row">
-            <div class="card-body">
-              <h4 class="card-title">Event Logs</h4>
-              <div class="table-responsive">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Timestamp</th>
-                      <th>Event_Type</th>
-                      <th>Status</th>
-                      <th>Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Jacob</td>
-                      <td>Photoshop</td>
-                      <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
-                      <td><label class="badge badge-danger">Pending</label></td>
-                      <td>Detail 1</td>
-                    </tr>
-                    <tr>
-                      <td>Messsy</td>
-                      <td>Flash</td>
-                      <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
-                      <td><label class="badge badge-warning">In progress</label></td>
-                      <td>Detail 1</td>
-                    </tr>
-                    <tr>
-                      <td>John</td>
-                      <td>Premier</td>
-                      <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
-                      <td><label class="badge badge-info">Fixed</label></td>
-                      <td>Detail 1</td>
-                    </tr>
-                    <tr>
-                      <td>Peter</td>
-                      <td>After effects</td>
-                      <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
-                      <td><label class="badge badge-success">Completed</label></td>
-                      <td>Detail 1</td>
-                    </tr>
-                    <tr>
-                      <td>Dave</td>
-                      <td>53275535</td>
-                      <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
-                      <td><label class="badge badge-warning">In progress</label></td>
-                      <td>Detail 1</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            </div>
+          
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -554,7 +458,66 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
-  <!-- End custom js for this page-->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js"></script>
+
+  <!-- ... Your existing HTML code ... -->
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.6/turf.min.js"></script>
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2xlZW0wMSIsImEiOiJjbHBzMWRwbTUwZGlkMmlvMTJoNnZvcmlnIn0.RFwVqhT3HXaC7pLRNY0glw';
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [35.48520, 33.89658],
+      zoom: 13,
+    });
+
+    const directions = new MapboxDirections({
+      accessToken: mapboxgl.accessToken,
+    });
+
+    map.addControl(directions, 'top-left');
+
+    // Simulate movement
+    const startCoords = [35.48520, 33.89658];
+    let userCoords; // Define userCoords variable
+
+    // Replace these values with the user's coordinates
+    const userLat = 35.49040;
+    const userLng = 33.88875;
+
+    userCoords = [userLat, userLng];
+
+    function simulateMovement(start, end, duration) {
+      const steps = 100; // Number of steps for the simulation
+      const deltaLat = (end[0] - start[0]) / steps;
+      const deltaLng = (end[1] - start[1]) / steps;
+
+      for (let i = 0; i < steps; i++) {
+        const simulatedCoords = [start[0] + i * deltaLat, start[1] + i * deltaLng];
+        setTimeout(() => {
+          map.panTo(simulatedCoords); // Pan to the simulated coordinates
+        }, (duration / steps) * i);
+      }
+    }
+
+    // Call the function to start the simulation
+    simulateMovement(startCoords, userCoords, 30000); // 30 seconds duration
+  </script>
+
+
+  
+
+
+
 </body>
 
 </html>
