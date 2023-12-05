@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="style/sim.css" />
+    <style>
+        /* Add your custom styles if needed */
+    </style>
+</head>
+<body>
+    <div>
+        <div class="player-buttons-wrapper ">
+            <div class="player-buttons " style="animation-duration: 0.5s;">
+                <div style="display: block;margin-top: 100px;">
+                    <div style="float: left;margin-right: 30px; margin-bottom: 40px;">
+                        <button id="zoneAButton" class="pushable selected" onclick="navigateToPage('zoneA')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">ZONE A</span>
+                        </button>
+                    </div>
+                    <div style="float: right; margin-left: 30px;margin-bottom: 40px;">
+                        <button id="zoneBButton" class="pushable selected" onclick="navigateToPage('zoneB')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">ZONE B</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display: block;">
+                    <div style="float: left; margin-right: 30px;margin-bottom: 40px;">
+                        <button id="zoneCButton" class="pushable selected" onclick="navigateToPage('zoneC')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">ZONE C</span>
+                        </button>
+                    </div>
+                    <div style="float: right; margin-left: 30px;margin-bottom: 40px;">
+                        <button id="zoneDButton" class="pushable selected" onclick="navigateToPage('zoneD')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">ZONE D</span>
+                        </button>
+                    </div>
+                </div>
+                <div style="display: block;">
+                    <div  style="float: left; margin-right: 30px;margin-bottom: 40px;">
+                        <button id="zoneEButton" class="pushable selected" onclick="navigateToPage('zoneE')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">ZONE E</span>
+                        </button>
+                    </div>
+                    <div style="float: right; margin-left: 30px;margin-bottom: 40px;">
+                        <button id="zoneFButton" class="pushable selected" onclick="navigateToPage('zoneF')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">ZONE F</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add a single audio element for all buttons -->
+    <audio id="zoneAudio" src="pre_alarm_sound.mp3" preload="auto"></audio>
+    <script src="script/script.js"></script>
+    <script>
+        function navigateToPage(zone) {
+            // Set the alarm state in localStorage
+            localStorage.setItem('alarmState', 'playing');
+
+            // Open the new page in a new tab
+            window.open('pages/samples/login.html', '_blank'); // Replace 'your_target_page.html' with the actual path
+        }
+
+        // Check the alarm state when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            var alarmState = localStorage.getItem('alarmState');
+
+            // If the alarm state is 'playing', start or resume the audio playback
+            if (alarmState === 'playing') {
+                var audio = document.getElementById('zoneAudio');
+                audio.play();
+            }
+        });
+    </script>
+</body>
+</html>

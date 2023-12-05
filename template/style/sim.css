@@ -1,0 +1,104 @@
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+    background: url("../media/meme-elmo.gif") center center fixed;
+    background-size: cover;
+}
+
+.player-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.player-buttons {
+    animation-duration: 0.5s;
+}
+
+.pushable {
+    position: relative;
+    border: none;
+    background: lightgray;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    border-radius: 12px;
+    border: 5px solid lightgray;
+}
+
+/* .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+} */
+
+.edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(to left, black 0%, #666 8%, #666 92%, black 100%);
+}
+
+.pushable.selected {
+    box-shadow: 0px 0px 8px 8px #ffff5d;
+}
+
+.pushable:hover {
+    filter: brightness(110%);
+}
+
+.pushable:active .front,
+.pushable.bounced .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.front {
+    display: block;
+    position: relative;
+    padding: 30px;
+    border-radius: 12px;
+    font-size: 45px;
+    color: white;
+    background: radial-gradient(#cbcbcb, #ff0303);
+    will-change: transform;
+    transform: translateY(-10px);
+    transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.pushable.unlocked:active .front,
+.pushable.unlocked.bounced .front {
+    background: radial-gradient(#ffbbbb, red);
+}
+
+.pushable.unlocked.home-button:active .front {
+    background: radial-gradient(#ffff5a, #ffd447);
+}
+
+.pushable:hover .shadow {
+    transform: translateY(3px);
+    transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.pushable.unlocked:active .shadow,
+.pushable.unlocked.bounced .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.pushable:focus:not(:focus-visible) {
+    outline: none;
+}
+

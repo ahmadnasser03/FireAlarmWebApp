@@ -392,6 +392,10 @@
       </nav>
       <!-- partial -->
       <div class="main-panel">
+        <div id="verificationButtons" style="display: block; text-align: center; margin-top: 10px;">
+          <button id="verifyButton" class="btn btn-success" style="background-color: #fa8331;" onclick="handleVerification('Verify Fire')">Verify Fire</button>
+          <button id="falseAlarmButton" class="btn btn-danger" onclick="handleVerification('False Alarm')">False Alarm</button>
+        </div>
         <div class="content-wrapper">
           <div class="row">
             <div class="col-md-12 grid-margin">
@@ -533,7 +537,7 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
+ 
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -554,6 +558,15 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
+  <script>
+    function handleVerification(verificationType) {
+      // Hide the buttons
+      document.getElementById('verificationButtons').style.display = 'none';
+
+      // Log the verification type (you can replace this with your actual logic)
+      console.log('Verification Type:', verificationType);
+    }
+  </script>
   <!-- End custom js for this page-->
 </body>
 
