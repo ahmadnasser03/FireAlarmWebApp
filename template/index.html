@@ -560,12 +560,40 @@
   <script src="js/Chart.roundedBarCharts.js"></script>
   <script>
     function handleVerification(verificationType) {
-      // Hide the buttons
-      document.getElementById('verificationButtons').style.display = 'none';
+  // Hide the verification buttons
+  document.getElementById('verificationButtons').style.display = 'none';
 
-      // Log the verification type (you can replace this with your actual logic)
-      console.log('Verification Type:', verificationType);
+  // Simulate a delay (adjust the time as needed)
+  setTimeout(function() {
+    // Check the verification type before showing the alert
+    if (verificationType.toLowerCase() === 'false alarm') {
+     
+      alert('This alarm is false');
+      
+      // Mute all alarms (you may need to implement this functionality)
+      muteAllAlarms();
+    } else {
+      var audio = new Audio('media/full_alarm_sound.mp3');
+      audio.play();
+      alert('Water sprinklers are on!');
+
+      // Show an alert that water sprinklers failed and contact authorities
+      alert('Water sprinklers failed. Contact authorities');
+      
+      // Redirect to a blank page (replace 'blank.html' with your actual blank page)
+      window.open('Authorites.html', '_blank');
     }
+  }, 3000); // Delay of 3 seconds (adjust as needed)
+}
+
+// Function to mute all alarms (replace with your actual implementation)
+function muteAllAlarms() {
+  // Implement the logic to mute all alarms
+  // This could involve updating the UI or sending a command to your alarm system
+  // Replace this comment with your actual implementation
+}
+
+
   </script>
   <!-- End custom js for this page-->
 </body>

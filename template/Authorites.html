@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="style/sim.css" />
+    <style>
+        /* Add your custom styles if needed */
+    </style>
+</head>
+<body>
+    <div>
+        <div class="player-buttons-wrapper ">
+            <div class="player-buttons " style="animation-duration: 0.5s;">
+                <div style="display: block;margin-top: 100px;">
+                    <div style="float: left;margin-right: 30px; margin-bottom: 40px;">
+                        <button class="pushable selected" onclick="makePhoneCall('01455000')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">Fire Department</span>
+                        </button>
+                    </div>
+                    <div style="float: right; margin-left: 30px;margin-bottom: 40px; text-align: center;">
+                        <button class="pushable selected" onclick="makePhoneCall('01372802')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front" style="padding-left: 120px; padding-right: 120px;">Ambulance</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display: block;">
+                    <div style="float: left; margin-right: 30px;margin-bottom: 40px;text-align: center;">
+                        <button class="pushable selected" onclick="makePhoneCall('112')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front" style="padding-left: 130px;padding-right: 130px;">Police</span>
+                        </button>
+                    </div>
+                    <div style="float: right; margin-left: 30px;margin-bottom: 40px; text-align: center;">
+                        <button class="pushable selected" onclick="makePhoneCall('01455000')">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front" style="padding-left: 100px;padding-right: 100px;">Headquarters</span>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Add a single audio element for all buttons -->
+   
+    <script src="script/script.js"></script>
+    
+    <script>
+        function makePhoneCall(phoneNumber) {
+            window.location.href = 'tel:' + phoneNumber;
+        }
+    </script>
+
+</body>
+</html>
