@@ -17,6 +17,25 @@
   <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
+  <style>
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+
+    .success-message {
+      color: green;
+      font-size: 0.9em;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .auth-form-btn:hover {
+      background-color: gray;
+      border: white;
+    }
+  </style>
 </head>
 
 <body>
@@ -27,36 +46,20 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="../../images/logo.svg" alt="logo">
+                <img src="../../images/GenD2.png" alt="logo"
+                  style="width: 87%; height: 87%; margin-left: 6.5%; padding-bottom: 5%;margin-bottom: 0%;">
               </div>
-              <h4>Hello! let's get started</h4>
-              <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
+              <h4>PIN</h4>
+              <form class="pt-3" onsubmit="return validateForm()">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1"
+                    placeholder="Enter your Password">
+                  <div class="error-message" id="passwordError"></div>
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
-                </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      Keep me signed in
-                    </label>
-                  </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
-                </div>
-                <div class="mb-2">
-                  <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                    <i class="ti-facebook mr-2"></i>Connect using facebook
-                  </button>
-                </div>
-                <div class="text-center mt-4 font-weight-light">
-                  Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                  <button type="submit"
+                    class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                  <div class="success-message" id="successMessage"></div>
                 </div>
               </form>
             </div>
@@ -80,6 +83,43 @@
   <script src="../../js/settings.js"></script>
   <script src="../../js/todolist.js"></script>
   <!-- endinject -->
+  <script>
+    function validateForm() {
+      const password = document.getElementById("exampleInputPassword1").value;
+      const lowerCaseRegex = /[a-z]/;
+      const upperCaseRegex = /[A-Z]/;
+      const numberRegex = /[0-9]/;
+      const specialCharRegex = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
+
+      let isValid = true;
+
+      if (password.length < 7) {
+        document.getElementById("passwordError").textContent = "Invalid Password";
+        isValid = false;
+      } else if (!lowerCaseRegex.test(password) ||
+        !upperCaseRegex.test(password) ||
+        !numberRegex.test(password) ||
+        !specialCharRegex.test(password)) {
+        document.getElementById("passwordError").textContent = "Invalid Password";
+        isValid = false;
+      } else {
+        document.getElementById("passwordError").textContent = "";
+      }
+
+      if (isValid) {
+       
+
+        // For demonstration purposes, I'm displaying a success message without any further action
+        document.getElementById("successMessage").style.display = "block";
+        document.getElementById("successMessage").textContent = "User Authenticated";
+        setTimeout(function () {
+          window.location.href = "/template/index.html"; 
+        }, 2000);
+      }
+
+      return false; // Prevent form submission
+    }
+  </script>
 </body>
 
 </html>
