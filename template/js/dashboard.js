@@ -679,3 +679,30 @@ $('#example tbody').on('click', 'td.details-control', function () {
   
   });
 })(jQuery);
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("http://localhost:8080/GenD/getEvents")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse the response as JSON
+    })
+    .then(data => {
+      const tableBody = document.getElementById('dataTable');
+
+                data.forEach(event => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${event.id}</td>
+                        <td>${event.date_time}</td>
+                        <td>${event.event_type}</td>
+                        <td>${event.zone}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+});

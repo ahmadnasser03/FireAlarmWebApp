@@ -68,13 +68,18 @@
     <!-- Add a single audio element for all buttons -->
     <audio id="zoneAudio" src="pre_alarm_sound.mp3" preload="auto"></audio>
     <script src="script/script.js"></script>
+    <script src="functions.js"></script>
     <script>
         function navigateToPage(zone) {
+            
+            const z = zone.charAt(zone.length - 1);
+            logEvent(1, z);
             // Set the alarm state in localStorage
             localStorage.setItem('alarmState', 'playing');
 
             // Open the new page in a new tab
-            window.open('pages/samples/login.html', '_blank'); // Replace 'your_target_page.html' with the actual path
+            window.open('pages/samples/login.html', '_blank');
+            
         }
 
         // Check the alarm state when the page loads
